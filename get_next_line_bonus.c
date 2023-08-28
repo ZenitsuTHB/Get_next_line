@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avolcy <avolcy@student.42barcelon>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/18 12:14:29 by avolcy            #+#    #+#             */
-/*   Updated: 2023/08/28 18:26:51 by avolcy           ###   ########.fr       */
+/*   Created: 2023/08/28 15:20:20 by avolcy            #+#    #+#             */
+/*   Updated: 2023/08/28 15:25:59 by avolcy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <limits.h>
+#include "get_next_line_bonus.h"
 
 /*================DOCUMENTATION====================*/
 // we read till BUFFER_SIZE and store the data read in 
@@ -107,43 +106,16 @@ char	*ft_read(int fd, char *storage)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*storage = NULL;
+	static char	*storage[OPEN_MAX];//= {NULL};
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
-		free(storage);
-		storage = NULL;
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0 ,0) < 0)
+		return (ft_clean_up(&storage[fd]));
+	storage[fd] = ft_read(fd, storage[fd]);
+	if (storage[fd] == NULL)
 		return (NULL);
-	}
-	storage = ft_read(fd, storage);
-	if (storage == NULL)
-		return (NULL);
-	line = ft_extract(storage);
+	line = ft_extract(storage[fd]);
 	if (!line)
-		return (ft_clean_up(&storage));
-	storage = ft_update(storage);
+		return (ft_clean_up(&storage[fd]));
+	storage[fd] = ft_update(storage[fd]);
 	return (line);
 }
-/*int     main(int argc, char **argv)
-{
-    int     fd;
-    char    *line;
-    int i = 0;
-    (void)argc;
-//    (void)argv;
-//  fd = open(argv[1], O_RDONLY);
-//  fd = open("test/lines_around_10.txt",O_RDONLY);
- fd = open("test/giant_line_nl.txt",O_RDONLY);
-//    fd = -1;
-    while ((line = get_next_line(fd)))
-    {
-
-        if (line == NULL)
-            break;
-        printf("%s", line);
-        i++;
-        free (line);
-    }
-//  close(line);
-    return (0);
-}*/

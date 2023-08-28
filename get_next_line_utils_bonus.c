@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avolcy <avolcy@student.42barcelon>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 10:39:37 by avolcy            #+#    #+#             */
-/*   Updated: 2023/08/28 12:37:02 by avolcy           ###   ########.fr       */
+/*   Created: 2023/08/28 15:23:45 by avolcy            #+#    #+#             */
+/*   Updated: 2023/08/28 15:24:27 by avolcy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
+#include "get_next_line_bonus.h"
 /*==================FT_CLEAN_UP===================*/
 void	*ft_clean_up(char **alloc_mem)
 {
