@@ -106,9 +106,9 @@ char	*ft_read(int fd, char *storage)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*storage[OPEN_MAX];//= {NULL};
+	static char	*storage[OPEN_MAX];
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0 ,0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (ft_clean_up(&storage[fd]));
 	storage[fd] = ft_read(fd, storage[fd]);
 	if (storage[fd] == NULL)
