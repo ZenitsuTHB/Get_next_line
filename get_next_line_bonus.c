@@ -6,11 +6,11 @@
 /*   By: avolcy <avolcy@student.42barcelon>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:20:20 by avolcy            #+#    #+#             */
-/*   Updated: 2023/08/28 15:25:59 by avolcy           ###   ########.fr       */
+/*   Updated: 2023/09/07 18:00:51 by avolcy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 /*================DOCUMENTATION====================*/
 // we read till BUFFER_SIZE and store the data read in 
